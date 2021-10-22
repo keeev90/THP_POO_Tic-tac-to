@@ -3,6 +3,7 @@ require 'bundler'
 Bundler.require
 
 $:.unshift File.expand_path("./../lib", __FILE__)
+require 'app/application'
 require 'app/game'
 require 'app/player'
 require 'app/board'
@@ -11,4 +12,4 @@ require 'app/board_case'
 #require 'views/index'
 
 #Initialisation d'une nouvelle partie
-Game.new.perform
+RunApp.new.perform

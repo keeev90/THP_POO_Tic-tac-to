@@ -3,15 +3,15 @@ class Board
 
   ### INITIALISER UN TABLEAU VIDE A CHAQUE NOUVELLE PARTIE ###
   def initialize
-    @A1 = BoardCase.new('A1', "-") # case_id = A1 et case_value = "-" 
-    @A2 = BoardCase.new('A2', "-")
-    @A3 = BoardCase.new('A3', "-")
-    @B1 = BoardCase.new('B1', "-")
-    @B2 = BoardCase.new('B2', "-")
-    @B3 = BoardCase.new('B3', "-")
-    @C1 = BoardCase.new('C1', "-")
-    @C2 = BoardCase.new('C2', "-")
-    @C3 = BoardCase.new('C3', "-")
+    @A1 = BoardCase.new('A1') 
+    @A2 = BoardCase.new('A2')
+    @A3 = BoardCase.new('A3')
+    @B1 = BoardCase.new('B1')
+    @B2 = BoardCase.new('B2')
+    @B3 = BoardCase.new('B3')
+    @C1 = BoardCase.new('C1')
+    @C2 = BoardCase.new('C2')
+    @C3 = BoardCase.new('C3')
 
     @boardcases = [@A1, @A2, @A3, @B1, @B2, @B3, @C1, @C2, @C3]
     @boardcases_unfilled = ["A1", "A2", "A3", "B1", "B2", "B3", "C1", "C2", "C3"] #servia pour déterminer si une case est dispo en fonction des cases déjà sélectionnées
@@ -27,8 +27,8 @@ class Board
     puts
   end 
 
-  ### CHOIX DE L'ACTION PAR UN JOUEUR ###
-  def player_choice(player)
+  ### METHODE POUR LE TOUR D'UN JOUEUR ###
+  def player_choice(player) # variable 'player' qui sera remplacée par l'instance player1 et player 2
 
     puts "Quelle action veux-tu effectuer ? ⚔️ "
     puts 
@@ -93,29 +93,29 @@ class Board
 
   #Cas n°2 : il y a un vainqueur
   def is_winner?
-    if @A1.case_value + @A2.case_value + @A3.case_value == "xxx" || "ooo" 
+    if @A1.case_value + @A2.case_value + @A3.case_value == "xxx" || @A1.case_value + @A2.case_value + @A3.case_value == "ooo" 
       return true
-    elsif @B1.case_value + @B2.case_value + @B3.case_value == "xxx" || "ooo"
+    elsif @B1.case_value + @B2.case_value + @B3.case_value == "xxx" || @B1.case_value + @B2.case_value + @B3.case_value == "ooo"
       return true
-    elsif @C1.case_value + @C2.case_value + @C3.case_value == "xxx" || "ooo"
+    elsif @C1.case_value + @C2.case_value + @C3.case_value == "xxx" || @C1.case_value + @C2.case_value + @C3.case_value == "ooo"
       return true
-    elsif @A1.case_value + @B1.case_value + @C1.case_value == "xxx" || "ooo"
+    elsif @A1.case_value + @B1.case_value + @C1.case_value == "xxx" || @A1.case_value + @B1.case_value + @C1.case_value == "ooo"
       return true
-    elsif @A2.case_value + @B2.case_value + @C2.case_value == "xxx" || "ooo"
+    elsif @A2.case_value + @B2.case_value + @C2.case_value == "xxx" || @A2.case_value + @B2.case_value + @C2.case_value == "ooo"
       return true
-    elsif @A3.case_value + @B3.case_value + @C3.case_value == "xxx" || "ooo"
+    elsif @A3.case_value + @B3.case_value + @C3.case_value == "xxx" || @A3.case_value + @B3.case_value + @C3.case_value == "ooo"
       return true
-    elsif @A1.case_value + @B2.case_value + @C3.case_value == "xxx" || "ooo"
+    elsif @A1.case_value + @B2.case_value + @C3.case_value == "xxx" || @A1.case_value + @B2.case_value + @C3.case_value == "ooo"
       return true
-    elsif @A3.case_value + @B2.case_value + @C1.case_value == "xxx" || "ooo"
+    elsif @A3.case_value + @B2.case_value + @C1.case_value == "xxx" || @A3.case_value + @B2.case_value + @C1.case_value == "ooo"
       return true
     else
       return false
     end
   end
-
-  ### METHODE POUR REINITIALISER LE BOARD ###
-  def reinit
+  
+  ### METHODE POUR NETTOYER LE BOARD ###
+  def clean_board
     @A1.case_value = "-"
     @A2.case_value = "-"
     @A3.case_value = "-"
